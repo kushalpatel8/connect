@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 import AuthRoute from './routes/AuthRoute.js';
+import UserRoute from './routes/UserRoute.js';
+import PostRoute from './routes/PostRoute.js';
 
 dotenv.config();
 
@@ -17,6 +19,8 @@ app.use(express.static('public'));
 app.use('/images', express.static('images'));
 
 app.use('/auth', AuthRoute);
+app.use('/user', UserRoute);
+app.use('/post', PostRoute);
 
 
 const connectDB = async () => {
