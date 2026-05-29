@@ -13,12 +13,12 @@ const userSchema = new mongoose.Schema(
             required : true,
         },
 
-        firstName : {
+        firstname : {
             type : String,
             required : true,
         },
 
-        lastName : {
+        lastname : {
             type : String,
         }, 
         isAdmin : {

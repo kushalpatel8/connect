@@ -86,7 +86,7 @@ export const like_DislikePost = async (req, res) => {
 
 // get timeline posts
 export const timeline = async (req, res) => {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     try {
         const currUserPosts = await postModel.find({userId : userId});
         const followingUserPosts = await UserModel.aggregate(

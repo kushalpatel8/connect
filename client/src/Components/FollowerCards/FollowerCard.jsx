@@ -16,8 +16,8 @@ const FollowersCard = () => {
   }, []);
 
   return (
-    <div className="w-full rounded-[0.7rem] flex flex-col gap-4 text-[15px]">
-      <h3 className="font-semibold">People you may know...</h3>
+    <div className="w-full glass-card rounded-2xl flex flex-col gap-4 text-[15px] p-5 transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+      <h3 className="font-bold text-lg text-white">People you may know...</h3>
 
       {persons.map((person, id) => {
         if (person._id !== user._id) {

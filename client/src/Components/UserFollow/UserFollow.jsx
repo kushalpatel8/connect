@@ -6,7 +6,7 @@ const UserFollow = ({person}) => {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.authReducer.authData);
     const [following, setFollowing] = useState(person.followers.includes(user._id));
-    const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+    const serverPublic = import.meta.env.VITE_PUBLIC_FOLDER;
 
   const handleFollow = () => {
     if (following) {
@@ -17,8 +17,8 @@ const UserFollow = ({person}) => {
     setFollowing((prev) => !prev);
   }; 
     return (
-    <div className="follower">
-      <div>
+    <div className="flex justify-between items-center w-full mt-2">
+      <div className="flex gap-3 items-center">
         <img
           src={
             person.profilePicture
@@ -26,18 +26,18 @@ const UserFollow = ({person}) => {
               : serverPublic + "defaultProfile.png"
           }
           alt="profile"
-          className="followerImg"
+          className="w-12 h-12 rounded-full object-cover shadow-sm"
         />
 
-        <div className="name">
-          <span>{person.firstname}</span>
-          <span>
+        <div className="flex flex-col">
+          <span className="font-bold text-white">{person.firstname}</span>
+          <span className="text-xs text-gray-400">
             @{person.firstname} {person.lastname}
           </span>
         </div>
       </div>
 
-      <button className="button fc-button" onClick={handleFollow}>
+      <button className="btn-primary px-4 py-1 text-sm rounded-lg font-medium" onClick={handleFollow}>
         {following ? "Unfollow" : "Follow"}
       </button>
     </div>

@@ -5,10 +5,12 @@ import RightSide from '../Components/RightSide/RightSide'
 
 const Home = () => {
   return (
-    <div className="relative grid gap-4 [grid-template-columns:18rem_auto_20rem]">
+    <div className="relative grid grid-cols-1 md:grid-cols-[18rem_auto] lg:grid-cols-[18rem_auto_20rem] gap-6">
         <ProfileSide />
         <PostSide />
-        <RightSide />
+        <div className="hidden lg:block">
+          <RightSide />
+        </div>
     </div>
   )
 }

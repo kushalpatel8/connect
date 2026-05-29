@@ -1,6 +1,6 @@
 import * as UploadApi from '../api/UploadRequest';
 
-const uploadImage = (data) => async (dispatch) => {
+export const uploadImage = (data) => async (dispatch) => {
     try {
         await UploadApi.uploadImage(data);
     }
@@ -9,7 +9,7 @@ const uploadImage = (data) => async (dispatch) => {
     }
 }
 
-const uploadPost = (data) => async (dispatch) => {
+export const uploadPost = (data) => async (dispatch) => {
     dispatch({ type: "UPLOAD_START" });
     try {
         const { data } = await UploadApi.uploadPost(data);

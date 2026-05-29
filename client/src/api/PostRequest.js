@@ -2,6 +2,6 @@ import axios from "axios";
 
 const API = axios.create({ baseURL: "http://localhost:3000"});
 
-export const getTimelinePosts = (id) =>API.get(`/post/${id}/timeline`);
+export const getTimelinePosts = (id) =>API.get(`/post/timeline/${id}`);
 
-export const likePost = (id, userId) => API.put(`/post/${id}/like_DislikePost`, {userId : userId});
+export const likePost = (id, userId) => API.put(`/post/${id}/like_dislike`, {userId : userId});

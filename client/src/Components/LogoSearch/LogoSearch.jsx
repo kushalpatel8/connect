@@ -4,18 +4,18 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const LogoSearch = () => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-4 items-center">
 
-      <img src={Logo} alt="" />
+      <img src={Logo} alt="" className="w-10 h-10 drop-shadow-[0_0_10px_rgba(150,21,219,0.4)]" />
 
-      <div className="flex bg-[var(--inputColor)] rounded-[10px] p-[5px]">
+      <div className="flex glass-input rounded-xl p-1 overflow-hidden transition-all hover:shadow-[0_0_10px_rgba(150,21,219,0.1)] w-full">
         <input
           type="text"
-          placeholder="#Search"
-          className="bg-transparent border-none outline-none"
+          placeholder="#Explore"
+          className="bg-transparent border-none outline-none px-3 text-sm text-white w-full placeholder-gray-400"
         />
 
-        <div className="flex items-center justify-center bg-gradient-to-r from-[#6674cc] to-[#b578ff] rounded-[5px] p-1 text-white cursor-pointer">
+        <div className="flex items-center justify-center btn-primary rounded-lg p-2 text-white cursor-pointer">
           <SearchIcon />
         </div>
       </div>

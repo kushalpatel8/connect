@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Logo from '../../Img/logo.png';
+import Logo from '../Img/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { logIn, signUp } from '../../actions/AuthAction.js';
+import { logIn, signUp } from '../actions/AuthAction.js';
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -45,27 +45,31 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen gap-16 bg-gray-50">
+    <div className="flex items-center justify-center min-h-[100vh] gap-16 relative overflow-hidden">
+      
+      {/* Background Orbs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-600/20 blur-[120px] pointer-events-none"></div>
 
       {/* Left Side */}
-      <div className="flex items-center gap-8">
-        <img src={Logo} alt="Logo" className="w-16 h-16" />
+      <div className="flex items-center gap-8 z-10 hidden md:flex">
+        <img src={Logo} alt="Logo" className="w-16 h-16 drop-shadow-[0_0_15px_rgba(150,21,219,0.5)]" />
         <div>
-          <h2 className="text-2xl font-bold text-blue-700">Welcome!</h2>
-          <h5 className="text-sm text-gray-500 mt-1">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#b578ff] to-[#6674cc]">Connect</h2>
+          <h5 className="text-sm text-gray-300 mt-2 font-medium tracking-wide">
             Explore the ideas throughout <br /> the world.
           </h5>
         </div>
       </div>
 
       {/* Right Side */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center z-10">
         <form
-          className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center gap-6 w-80"
+          className="glass-card rounded-3xl p-8 flex flex-col items-center gap-6 w-[22rem] transition-all duration-300 hover:shadow-[0_0_30px_rgba(150,21,219,0.15)]"
           onSubmit={handlSubmit}
         >
-          <h2 className="text-2xl font-semibold text-gray-800">
-            {isSignUp ? 'Sign Up' : 'Log In'}
+          <h2 className="text-2xl font-bold text-white mb-2">
+            {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
 
           {isSignUp && (
@@ -73,7 +77,7 @@ const Auth = () => {
               <input
                 type="text"
                 placeholder="First Name"
-                className="bg-gray-100 rounded-lg px-4 py-3 flex-1 outline-none text-sm"
+                className="glass-input rounded-xl px-4 py-3 flex-1 text-sm w-full"
                 name="firstname"
                 onChange={handleChange}
                 value={data.firstname}
@@ -81,7 +85,7 @@ const Auth = () => {
               <input
                 type="text"
                 placeholder="Last Name"
-                className="bg-gray-100 rounded-lg px-4 py-3 flex-1 outline-none text-sm"
+                className="glass-input rounded-xl px-4 py-3 flex-1 text-sm w-full"
                 name="lastname"
                 onChange={handleChange}
                 value={data.lastname}
@@ -92,19 +96,19 @@ const Auth = () => {
           <div className="w-full">
             <input
               type="text"
-              placeholder="Email"
-              className="bg-gray-100 rounded-lg px-4 py-3 w-full outline-none text-sm"
+              placeholder="Email Address"
+              className="glass-input rounded-xl px-4 py-3 w-full text-sm"
               name="email"
               onChange={handleChange}
               value={data.email}
             />
           </div>
 
-          <div className="flex gap-3 w-full">
+          <div className="flex flex-col gap-3 w-full">
             <input
               type="password"
               placeholder="Password"
-              className="bg-gray-100 rounded-lg px-4 py-3 flex-1 outline-none text-sm"
+              className="glass-input rounded-xl px-4 py-3 w-full text-sm"
               name="password"
               onChange={handleChange}
               value={data.password}
@@ -113,7 +117,7 @@ const Auth = () => {
               <input
                 type="password"
                 placeholder="Confirm Password"
-                className="bg-gray-100 rounded-lg px-4 py-3 flex-1 outline-none text-sm"
+                className="glass-input rounded-xl px-4 py-3 w-full text-sm"
                 name="confirmpass"
                 onChange={handleChange}
                 value={data.confirmpass}
@@ -122,14 +126,14 @@ const Auth = () => {
           </div>
 
           {!confirmPass && (
-            <span className="text-red-500 text-xs self-end mr-1">
-              * Confirm Password is not same
+            <span className="text-red-400 text-xs self-start ml-1 -mt-2 font-medium">
+              * Passwords do not match
             </span>
           )}
 
-          <div className="w-full">
+          <div className="w-full text-center mt-2">
             <span
-              className="text-xs text-gray-500 cursor-pointer hover:text-blue-600 transition-colors"
+              className="text-xs text-gray-400 cursor-pointer hover:text-white transition-colors"
               onClick={() => {
                 setIsSignUp((prev) => !prev);
                 restForm();
@@ -137,16 +141,16 @@ const Auth = () => {
             >
               {isSignUp
                 ? 'Already have an account? Login here'
-                : "Don't have an account? SignUp here"}
+                : "Don't have an account? Sign up here"}
             </span>
           </div>
 
           <button
-            className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white text-sm font-medium rounded-lg px-6 py-2 w-24 transition-colors"
+            className="btn-primary rounded-xl px-8 py-3 w-full font-semibold tracking-wide mt-2"
             type="submit"
             disabled={loading}
           >
-            {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Login'}
+            {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Log In'}
           </button>
         </form>
       </div>

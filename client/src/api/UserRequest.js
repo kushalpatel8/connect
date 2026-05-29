@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
 
 export const getUser = (userId) => API.get(`/user/${userId}`);
 
-export const updateUser = (userId, formData) => API.patch(`/user/${userId}`, formData);
+export const updateUser = (userId, formData) => API.put(`/user/${userId}`, formData);
 
 export const getAllUser = () => API.get('/user');
 

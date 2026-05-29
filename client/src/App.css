@@ -1,64 +1,107 @@
 @import "tailwindcss";
-:root {
-  --lightPurple: #b578ff;
-  --darkPurple: #6674cc;
-  --purplePain: #9615db;
-  --yellow: #f5c32c;
-  --orange: #fca61f;
-  --black: #242d49;
-  --gray: rgba(36, 45, 73, 0.65);
-  --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
-  --hrColor: #cfcdcd;
-  --cardColor: rgba(255, 255, 255, 0.64);
-  --buttonBg: linear-gradient(98.63deg, #6674cc 10%, #9615db 100%);
-  --inputColor: rgba(40, 52, 62, 0.07);
-  --photo: #4CB256;
-  --video: #4A4EB7;
-  --location: #EF5757;
---shedule: #E1AE4A;
+
+@theme {
+  --color-brand-light: #b578ff;
+  --color-brand-dark: #6674cc;
+  --color-brand-primary: #9615db;
+  --color-bg-dark: #0f111a;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --animate-gradient: gradient-x 15s ease infinite;
 }
 
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(102, 116, 204, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(150, 21, 219, 0.15), transparent 25%);
+  color: #e2e8f0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
 .App {
-  overflow: hidden;
-  color: var(--black);
-  background: #f3f3f3;
-  padding: 1rem 1rem;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
 }
 
-.blur{
-  position: absolute;
-  width: 22rem;
-  height: 14rem;
-  border-radius: 50%;
-  background: #a6ddf0;
-  filter: blur(72px);
+/* Glassmorphism Utilities */
+.glass-card {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-.button{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.glass-input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--color-brand-primary);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2px rgba(150, 21, 219, 0.2);
+}
+
+/* Button Gradient */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-brand-dark) 0%, var(--color-brand-primary) 100%);
   color: white;
-  background: var(--buttonBg);
-  border: none;
-  border-radius: 0.5rem;
-  transition: all 100ms ease-out;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
-.button:hover{
-  cursor: pointer;
-  background: transparent;
-  color: var(--purplePain);
-  border: 2px solid var(--purplePain);
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px var(--color-brand-primary);
+  border-color: rgba(255,255,255,0.2);
 }
 
-
-.button:disabled{
-  background: silver;
-  pointer-events: none;
+.btn-primary:active {
+  transform: translateY(0);
 }
 
+.btn-primary:disabled {
+  background: #334155;
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Hide Scrollbar but keep functionality */
 ::-webkit-scrollbar {
-  display: none; 
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

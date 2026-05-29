@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -13,8 +13,9 @@ const PostShare = () => {
     const [image, setImage] = useState(null);
     const imageRef = useRef();
     const dispatch = useDispatch();
-    const dsec = useSelector((state) => state.authReducer.user);
-    const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+    const { user } = useSelector((state) => state.authReducer.authData) || { user: {} };
+    const desc = useRef();
+    const serverPublic = import.meta.env.VITE_PUBLIC_FOLDER;
 
     const onImageChange = (event) => {
         if(event.target.files && event.target.files[0]) {
@@ -53,7 +54,7 @@ const PostShare = () => {
     }
 
     return (
-        <div className="flex gap-4 bg-[var(--cardColor)] p-4 rounded-2xl">
+        <div className="flex gap-4 glass-card p-5 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
             
             {/* Profile Picture */}
             <img
@@ -68,10 +69,10 @@ const PostShare = () => {
                 {/* Caption Input */}
                 <input
                     type="text"
-                    placeholder="Write a caption..."
+                    placeholder="What's on your mind?"
                     required
                     ref={desc}
-                    className="bg-[var(--inputColor)] rounded-[10px] px-[10px] py-[10px] text-[17px] border-none outline-none"
+                    className="glass-input rounded-xl px-4 py-3 text-[15px] w-full mb-2"
                 />
 
                 {/* Post Options */}
@@ -102,7 +103,7 @@ const PostShare = () => {
 
                     {/* Share Button */}
                     <button
-                        className="py-[5px] px-5 text-[15px] rounded-[10px] bg-gradient-to-r from-[#6674cc] to-[#b578ff] text-white cursor-pointer disabled:opacity-50"
+                        className="btn-primary py-2 px-8 text-sm rounded-xl font-bold tracking-wide"
                         onClick={handleSubmit}
                         disabled={loading}
                     >

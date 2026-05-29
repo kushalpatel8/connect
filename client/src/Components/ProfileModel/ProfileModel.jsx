@@ -28,7 +28,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        let UserData = formData;
+        let UserData = { ...formData };
         if (profileImage) {
             const data = new FormData();
             const fileName = Date.now() + profileImage.name;

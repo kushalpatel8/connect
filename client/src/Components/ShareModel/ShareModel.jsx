@@ -20,3 +20,5 @@ function ShareModal({ modalOpened, setModalOpened }) {
         </>
     );
 }
+
+export default ShareModal;

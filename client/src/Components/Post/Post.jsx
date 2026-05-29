@@ -18,30 +18,30 @@ const Post = ({ data }) => {
   };
 
   return (
-    <div className="flex flex-col p-4 bg-[var(--cardColor)] rounded-2xl gap-4">
+    <div className="flex flex-col p-5 glass-card rounded-2xl gap-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
 
       <img
-        src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ' '}
+        src={data.image ? import.meta.env.VITE_PUBLIC_FOLDER + data.image : ' '}
         alt=""
-        className="w-full max-h-80 object-cover rounded-lg"
+        className="w-full max-h-[30rem] object-cover rounded-xl"
       />
 
-      <div className="flex items-start gap-6">
+      <div className="flex items-start gap-6 mt-2">
         <img
           src={liked ? Like : Notlike}
           alt=""
-          className="cursor-pointer"
+          className="cursor-pointer hover:scale-110 transition-transform duration-200"
           onClick={handleLike}
         />
-        <img src={Comment} alt="" />
-        <img src={Share} alt="" />
+        <img src={Comment} alt="Comment" className="cursor-pointer hover:scale-110 transition-transform duration-200" />
+        <img src={Share} alt="Share" className="cursor-pointer hover:scale-110 transition-transform duration-200" />
       </div>
 
-      <span className="text-[var(--gray)] text-sm">{likes} likes</span>
+      <span className="text-gray-400 text-sm font-medium">{likes} likes</span>
 
-      <div className="flex gap-2">
-        <span className="font-bold">{data.name}</span>
-        <span>{data.desc}</span>
+      <div className="flex gap-3 items-baseline">
+        <span className="font-bold text-white text-[15px]">{data.name}</span>
+        <span className="text-gray-300 text-sm leading-relaxed">{data.desc}</span>
       </div>
 
     </div>

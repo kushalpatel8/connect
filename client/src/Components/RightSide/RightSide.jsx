@@ -4,7 +4,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import Noti from '../../Img/noti.png';
 import Comment from '../../Img/comment.png';
 import TrendCard from '../TrendCard/TrendCard';
-import ShareModal from '../ShareModal/ShareModal';
+import ShareModal from '../ShareModel/ShareModel';
 import { Link } from 'react-router-dom';
 
 const RightSide = () => {
@@ -14,19 +14,19 @@ const RightSide = () => {
     return (
         <div className="flex flex-col gap-8">
 
-            <div className="mt-4 flex justify-between items-center">
+            <div className="mt-4 flex justify-between items-center text-white">
                 <Link to='../home'>
-                    <img src={Home} alt="" className="w-8 h-8" />
+                    <img src={Home} alt="" className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
                 </Link>
-                <SettingsOutlinedIcon />
-                <img src={Noti} alt="" className="w-6 h-6" />
-                <img src={Comment} alt="" className="w-6 h-6" />
+                <SettingsOutlinedIcon className="cursor-pointer hover:scale-110 transition-transform duration-200" />
+                <img src={Noti} alt="" className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200" />
+                <img src={Comment} alt="" className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200" />
             </div>
 
             <TrendCard />
 
             <div
-                className="button h-12 w-4/5 self-center cursor-pointer"
+                className="btn-primary flex items-center justify-center h-12 w-4/5 self-center cursor-pointer rounded-xl font-bold tracking-wide"
                 onClick={() => setModalOpened(true)}
             >
                 Share
