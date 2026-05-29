@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Comment from '../../Img/comment.png';
-import Share from '../../Img/share.png';
-import Like from '../../Img/like.png';
-import Notlike from '../../Img/notlike.png';
+import { Heart, MessageSquare, Send } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { likePost } from '../../api/PostRequest';
 
@@ -27,14 +24,13 @@ const Post = ({ data }) => {
       />
 
       <div className="flex items-start gap-6 mt-2">
-        <img
-          src={liked ? Like : Notlike}
-          alt=""
-          className="cursor-pointer hover:scale-110 transition-transform duration-200"
+        <Heart
+          className={`w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 ${liked ? 'text-[#e60023] fill-[#e60023]' : 'text-gray-300 hover:text-white'}`}
           onClick={handleLike}
+          strokeWidth={2}
         />
-        <img src={Comment} alt="Comment" className="cursor-pointer hover:scale-110 transition-transform duration-200" />
-        <img src={Share} alt="Share" className="cursor-pointer hover:scale-110 transition-transform duration-200" />
+        <MessageSquare className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
+        <Send className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
       </div>
 
       <span className="text-gray-400 text-sm font-medium">{likes} likes</span>

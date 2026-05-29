@@ -68,35 +68,42 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                     blur: 3,
                 }}
             >
-                <form className='infoForm' >
-                    <h3>Update Your info</h3>
-                    <div>
-                        <input type="text" placeholder='First Name' className='infoInput' name="firstname"
+                <form className='flex flex-col gap-4 text-white' >
+                    <h3 className="font-bold text-xl mb-4 text-[#b578ff]">Update Your Info</h3>
+                    
+                    <div className="flex gap-4">
+                        <input type="text" placeholder='First Name' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="firstname"
                             onChange={handleChange} value={formData.firstname} />
-                        <input type="text" placeholder='Last Name' className='infoInput' name="lastname"
+                        <input type="text" placeholder='Last Name' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="lastname"
                             onChange={handleChange} value={formData.lastname} />
                     </div>
-                    <div>
-                        <input type="text" placeholder='Works At' className='infoInput' name="worksAt"
+                    
+                    <div className="flex gap-4">
+                        <input type="text" placeholder='Works At' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="worksAt"
                             onChange={handleChange} value={formData.worksAt} />
                     </div>
-                    <div>
-                        <input type="text" placeholder='Lives in' className='infoInput' name="livesin"
+                    
+                    <div className="flex gap-4">
+                        <input type="text" placeholder='Lives in' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="livesin"
                             onChange={handleChange} value={formData.livesin} />
-                        <input type="text" placeholder='Country' className='infoInput' name="country"
+                        <input type="text" placeholder='Country' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="country"
                             onChange={handleChange} value={formData.country} />
                     </div>
-                    <div>
-                        <input type="text" placeholder='RelationShip Status' className='infoInput' name="relationship"
+                    
+                    <div className="flex gap-4">
+                        <input type="text" placeholder='Relationship Status' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="relationship"
                             onChange={handleChange} value={formData.relationship} />
                     </div>
-                    <div>
-                        <h5>Profile Image</h5>
-                        <input type="file" name='profileImage' onChange={onImageChange} />
-                        <h5>Cover Image</h5>
-                        <input type="file" name='coverImage' onChange={onImageChange} />
+                    
+                    <div className="flex flex-col gap-2 mt-2">
+                        <h5 className="text-gray-300 font-medium">Profile Image</h5>
+                        <input type="file" name='profileImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#9615db] file:text-white hover:file:bg-[#b578ff] cursor-pointer" />
+                        
+                        <h5 className="text-gray-300 font-medium mt-2">Cover Image</h5>
+                        <input type="file" name='coverImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#9615db] file:text-white hover:file:bg-[#b578ff] cursor-pointer" />
                     </div>
-                    <button className='button infoButton' onClick={handleSubmit}>Update</button>
+                    
+                    <button className='btn-primary rounded-xl px-8 py-3 font-semibold tracking-wide mt-4 self-end' onClick={handleSubmit}>Update</button>
                 </form>
             </Modal>
         </>

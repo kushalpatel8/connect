@@ -34,7 +34,7 @@ class ErrorBoundary extends React.Component {
 createRoot(document.getElementById('root')).render(
   <ErrorBoundary>
     <Provider store={store}>
-      <MantineProvider>
+      <MantineProvider forceColorScheme="dark">
         <BrowserRouter>
           <App />
         </BrowserRouter>

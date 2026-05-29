@@ -3,12 +3,13 @@ import Auth from './Pages/Auth';
 import Home from './Pages/Home';
 import Profile from './Pages/Profile';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
 
 function App() {
   const user = useSelector((state) => state.authReducer.authData);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden p-6 md:p-8">
 
       {/* Blur decorative blobs */}
       <div className="absolute w-52 h-52 rounded-full bg-blue-300/30 blur-3xl -top-[18%] right-0 pointer-events-none" />

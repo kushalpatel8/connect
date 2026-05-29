@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { UserCircle } from 'lucide-react';
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, unFollowUser } from "../../actions/UserAction";
 
@@ -19,15 +20,15 @@ const UserFollow = ({person}) => {
     return (
     <div className="flex justify-between items-center w-full mt-2">
       <div className="flex gap-3 items-center">
-        <img
-          src={
-            person.profilePicture
-              ? serverPublic + person.profilePicture
-              : serverPublic + "defaultProfile.png"
-          }
-          alt="profile"
-          className="w-12 h-12 rounded-full object-cover shadow-sm"
-        />
+        {person.profilePicture ? (
+          <img
+            src={serverPublic + person.profilePicture}
+            alt="profile"
+            className="w-12 h-12 rounded-full object-cover shadow-sm"
+          />
+        ) : (
+          <UserCircle className="w-12 h-12 text-[#b578ff] shadow-sm bg-[#0f111a] rounded-full p-1" strokeWidth={1.5} />
+        )}
 
         <div className="flex flex-col">
           <span className="font-bold text-white">{person.firstname}</span>

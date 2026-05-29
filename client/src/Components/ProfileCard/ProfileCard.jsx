@@ -1,4 +1,5 @@
 import React from 'react'
+import { UserCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,20 +10,30 @@ const ProfileCard = ({ location }) => {
     const serverPublic = import.meta.env.VITE_PUBLIC_FOLDER;
 
     return (
-        <div className="glass-card rounded-3xl flex flex-col relative gap-4 overflow-x-clip pb-4 transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+        <div className="glass-card rounded-3xl flex flex-col relative gap-4 overflow-hidden pb-4 transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
 
             {/* Cover + Profile Images */}
             <div className="relative flex flex-col items-center justify-center">
-                <img
-                    src={user.coverPicture ? serverPublic + user.coverPicture : serverPublic + "defaultCover.jpg"}
-                    alt="cover"
-                    className="w-full h-[150px] object-cover opacity-80"
-                />
-                <img
-                    src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"}
-                    alt="profile"
-                    className="w-24 h-24 rounded-full absolute -bottom-12 object-cover border-4 border-[#0f111a] shadow-lg"
-                />
+                {user.coverPicture ? (
+                    <img
+                        src={serverPublic + user.coverPicture}
+                        alt="cover"
+                        className="w-full h-[150px] object-cover opacity-80 rounded-t-3xl"
+                    />
+                ) : (
+                    <div className="w-full h-[150px] bg-gradient-to-r from-[#6674cc]/20 to-[#9615db]/20 rounded-t-3xl" />
+                )}
+                {user.profilePicture ? (
+                    <img
+                        src={serverPublic + user.profilePicture}
+                        alt="profile"
+                        className="w-24 h-24 rounded-full absolute -bottom-12 object-cover border-4 border-[#0f111a] shadow-lg bg-[#0f111a]"
+                    />
+                ) : (
+                    <div className="w-24 h-24 rounded-full absolute -bottom-12 border-4 border-[#0f111a] shadow-lg bg-[#1a1d2d] flex items-center justify-center">
+                        <UserCircle className="w-16 h-16 text-[#b578ff]" strokeWidth={1.5} />
+                    </div>
+                )}
             </div>
 
             {/* Name & Bio */}
@@ -39,18 +50,18 @@ const ProfileCard = ({ location }) => {
             <div className="flex flex-col items-center justify-center gap-4 mt-2">
                 <hr className="w-[85%] border border-white/10" />
 
-                <div className="flex gap-4 w-4/5 justify-around items-center">
+                <div className="flex gap-2 w-full px-4 justify-around items-center">
 
                     <div className="flex flex-col items-center justify-center gap-1">
                         <span className="font-bold text-white text-lg">{user.followers.length}</span>
-                        <span className="text-gray-400 text-sm tracking-wide">Followers</span>
+                        <span className="text-gray-400 text-xs md:text-sm tracking-wide">Followers</span>
                     </div>
 
                     <div className="border-l border-white/10 h-[40px]" />
 
                     <div className="flex flex-col items-center justify-center gap-1">
                         <span className="font-bold text-white text-lg">{user.following.length}</span>
-                        <span className="text-gray-400 text-sm tracking-wide">Following</span>
+                        <span className="text-gray-400 text-xs md:text-sm tracking-wide">Following</span>
                     </div>
 
                     {location === "profilePage" && (
@@ -60,7 +71,7 @@ const ProfileCard = ({ location }) => {
                                 <span className="font-bold text-white text-lg">
                                     {posts.filter((post) => post.userId === user._id).length}
                                 </span>
-                                <span className="text-gray-400 text-sm tracking-wide">Posts</span>
+                                <span className="text-gray-400 text-xs md:text-sm tracking-wide">Posts</span>
                             </div>
                         </>
                     )}

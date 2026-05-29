@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { UserCircle } from 'lucide-react';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
@@ -57,11 +58,17 @@ const PostShare = () => {
         <div className="flex gap-4 glass-card p-5 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
             
             {/* Profile Picture */}
-            <img
-                src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"}
-                alt="profile"
-                className="rounded-full w-12 h-12 object-cover"
-            />
+            {user.profilePicture ? (
+                <img
+                    src={serverPublic + user.profilePicture}
+                    alt="profile"
+                    className="rounded-full w-12 h-12 object-cover shrink-0"
+                />
+            ) : (
+                <div className="rounded-full w-12 h-12 bg-[#1a1d2d] flex items-center justify-center shrink-0">
+                    <UserCircle className="w-8 h-8 text-[#b578ff]" strokeWidth={1.5} />
+                </div>
+            )}
 
             {/* Right Section */}
             <div className="flex flex-col w-[90%] gap-4">

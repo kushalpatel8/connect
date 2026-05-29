@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Home from '../../Img/home.png';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import Noti from '../../Img/noti.png';
-import Comment from '../../Img/comment.png';
+import { Home, Settings, Bell, MessageSquare } from 'lucide-react';
 import TrendCard from '../TrendCard/TrendCard';
 import ShareModal from '../ShareModel/ShareModel';
 import { Link } from 'react-router-dom';
@@ -16,11 +13,11 @@ const RightSide = () => {
 
             <div className="mt-4 flex justify-between items-center text-white">
                 <Link to='../home'>
-                    <img src={Home} alt="" className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
+                    <Home className="w-7 h-7 hover:scale-110 transition-transform duration-200 cursor-pointer text-[#b578ff]" strokeWidth={2} />
                 </Link>
-                <SettingsOutlinedIcon className="cursor-pointer hover:scale-110 transition-transform duration-200" />
-                <img src={Noti} alt="" className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200" />
-                <img src={Comment} alt="" className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200" />
+                <Settings className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
+                <Bell className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
+                <MessageSquare className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
             </div>
 
             <TrendCard />
