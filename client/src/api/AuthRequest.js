@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:3000"});
+const API = axios.create({ baseURL: import.meta.env.VITE_BAKEND_URL });
 
 export const signUp = (formData) => API.post('/auth/register', formData);
 

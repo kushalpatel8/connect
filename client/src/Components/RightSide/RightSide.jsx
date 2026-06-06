@@ -13,7 +13,7 @@ const RightSide = () => {
 
             <div className="mt-4 flex justify-between items-center text-white">
                 <Link to='../home'>
-                    <Home className="w-7 h-7 hover:scale-110 transition-transform duration-200 cursor-pointer text-[#b578ff]" strokeWidth={2} />
+                    <Home className="w-7 h-7 hover:scale-110 transition-transform duration-200 cursor-pointer text-[#4ade80]" strokeWidth={2} />
                 </Link>
                 <Settings className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />
                 <Bell className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform duration-200 text-gray-300 hover:text-white" strokeWidth={2} />

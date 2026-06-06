@@ -12,12 +12,15 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL?.replace(/\/$/, ''), // strip trailing slash
+    credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
-app.use('/images', express.static('images'));
+app.use('/images', express.static('public/images'));
 
 app.use('/auth', AuthRoute);
 app.use('/user', UserRoute);

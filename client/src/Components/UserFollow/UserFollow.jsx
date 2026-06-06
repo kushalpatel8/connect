@@ -27,7 +27,7 @@ const UserFollow = ({person}) => {
             className="w-12 h-12 rounded-full object-cover shadow-sm"
           />
         ) : (
-          <UserCircle className="w-12 h-12 text-[#b578ff] shadow-sm bg-[#0f111a] rounded-full p-1" strokeWidth={1.5} />
+          <UserCircle className="w-12 h-12 text-[#4ade80] shadow-sm bg-[#080d0b] rounded-full p-1" strokeWidth={1.5} />
         )}
 
         <div className="flex flex-col">

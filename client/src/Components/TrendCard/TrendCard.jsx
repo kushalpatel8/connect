@@ -2,7 +2,7 @@ import React from 'react';
 import { TrendData } from '../Data/TrendData';
 const TrendCard = () => {
   return (
-    <div className="flex flex-col gap-4 glass-card p-4 rounded-2xl pl-8 transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+    <div className="flex flex-col gap-4 glass-card p-4 rounded-2xl pl-8 transition-all hover:shadow-[0_0_20px_rgba(74,222,128,0.08)]">
       <h3 className="font-bold text-lg text-white">Trending for you</h3>
 
       {TrendData.map((trend) => (

@@ -15,10 +15,29 @@ export const registerUser = async (req, res) => {
         }
 
         const hashedPass = await bcrypt.hash(password.toString(), 10);
+
+        // Auto-follow all demo accounts so the feed is populated from day one
+        const demoEmails = [
+            'aria.patel@demo.com',
+            'liam.chen@demo.com',
+            'sofia.rivera@demo.com',
+            'james.okafor@demo.com',
+            'yuki.tanaka@demo.com',
+        ];
+        const demoUsers = await UserModel.find({ email: { $in: demoEmails } }, '_id');
+        const demoIds = demoUsers.map((d) => d._id.toString());
+
         const newUser = await UserModel.create({
             ...req.body,
             password : hashedPass,
+            following: demoIds,
         });
+
+        // Add new user to each demo account's followers list
+        await UserModel.updateMany(
+            { email: { $in: demoEmails } },
+            { $addToSet: { followers: newUser._id.toString() } }
+        );
 
         const user = await newUser.save();
 

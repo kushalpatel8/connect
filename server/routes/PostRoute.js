@@ -3,10 +3,10 @@ import { createPost, getPost, like_DislikePost, timeline, udatePost, deletePost 
 
 const router = express.Router();
 router.post('/', createPost);
+router.get('/timeline/:userId', timeline);
 router.get('/:id', getPost);
 router.put('/:id', udatePost);
 router.delete('/:id', deletePost);
 router.put('/:id/like_dislike', like_DislikePost);
-router.get('/timeline/:userId', timeline);
 
-export default router;
+export default router;

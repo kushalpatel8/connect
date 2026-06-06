@@ -69,7 +69,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                 }}
             >
                 <form className='flex flex-col gap-4 text-white' >
-                    <h3 className="font-bold text-xl mb-4 text-[#b578ff]">Update Your Info</h3>
+                    <h3 className="font-bold text-xl mb-4 text-[#4ade80]">Update Your Info</h3>
                     
                     <div className="flex gap-4">
                         <input type="text" placeholder='First Name' className='glass-input rounded-xl px-4 py-3 text-sm w-full' name="firstname"
@@ -97,10 +97,10 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                     
                     <div className="flex flex-col gap-2 mt-2">
                         <h5 className="text-gray-300 font-medium">Profile Image</h5>
-                        <input type="file" name='profileImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#9615db] file:text-white hover:file:bg-[#b578ff] cursor-pointer" />
+                        <input type="file" name='profileImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#7c3aed] file:text-white hover:file:bg-[#4ade80] hover:file:text-black cursor-pointer" />
                         
                         <h5 className="text-gray-300 font-medium mt-2">Cover Image</h5>
-                        <input type="file" name='coverImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#9615db] file:text-white hover:file:bg-[#b578ff] cursor-pointer" />
+                        <input type="file" name='coverImage' onChange={onImageChange} className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#7c3aed] file:text-white hover:file:bg-[#4ade80] hover:file:text-black cursor-pointer" />
                     </div>
                     
                     <button className='btn-primary rounded-xl px-8 py-3 font-semibold tracking-wide mt-4 self-end' onClick={handleSubmit}>Update</button>

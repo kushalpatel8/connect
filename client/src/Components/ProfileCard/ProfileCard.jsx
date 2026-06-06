@@ -10,7 +10,7 @@ const ProfileCard = ({ location }) => {
     const serverPublic = import.meta.env.VITE_PUBLIC_FOLDER;
 
     return (
-        <div className="glass-card rounded-3xl flex flex-col relative gap-4 overflow-hidden pb-4 transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+        <div className="glass-card rounded-3xl flex flex-col relative gap-4 overflow-hidden pb-4 transition-all hover:shadow-[0_0_20px_rgba(74,222,128,0.08)]">
 
             {/* Cover + Profile Images */}
             <div className="relative flex flex-col items-center justify-center">
@@ -21,17 +21,17 @@ const ProfileCard = ({ location }) => {
                         className="w-full h-[150px] object-cover opacity-80 rounded-t-3xl"
                     />
                 ) : (
-                    <div className="w-full h-[150px] bg-gradient-to-r from-[#6674cc]/20 to-[#9615db]/20 rounded-t-3xl" />
+                    <div className="w-full h-[150px] bg-gradient-to-r from-[#4ade80]/20 to-[#7c3aed]/25 rounded-t-3xl" />
                 )}
                 {user.profilePicture ? (
                     <img
                         src={serverPublic + user.profilePicture}
                         alt="profile"
-                        className="w-24 h-24 rounded-full absolute -bottom-12 object-cover border-4 border-[#0f111a] shadow-lg bg-[#0f111a]"
+                        className="w-24 h-24 rounded-full absolute -bottom-12 object-cover border-4 border-[#080d0b] shadow-lg bg-[#080d0b]"
                     />
                 ) : (
-                    <div className="w-24 h-24 rounded-full absolute -bottom-12 border-4 border-[#0f111a] shadow-lg bg-[#1a1d2d] flex items-center justify-center">
-                        <UserCircle className="w-16 h-16 text-[#b578ff]" strokeWidth={1.5} />
+                    <div className="w-24 h-24 rounded-full absolute -bottom-12 border-4 border-[#080d0b] shadow-lg bg-[#0e1a12] flex items-center justify-center">
+                        <UserCircle className="w-16 h-16 text-[#4ade80]" strokeWidth={1.5} />
                     </div>
                 )}
             </div>
@@ -82,7 +82,7 @@ const ProfileCard = ({ location }) => {
 
             {/* My Profile Link */}
             {location !== "profilePage" && (
-                <span className="font-bold text-[#b578ff] self-center my-2 cursor-pointer hover:text-[#9615db] transition-colors">
+                <span className="font-bold text-[#4ade80] self-center my-2 cursor-pointer hover:text-[#7c3aed] transition-colors">
                     <Link style={{ textDecoration: "none", color: "inherit" }} to={`/profile/${user._id}`}>
                         My Profile
                     </Link>

@@ -13,13 +13,13 @@ const InfoCard = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3 glass-card p-4 rounded-2xl w-[90%] transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+    <div className="flex flex-col gap-3 glass-card p-4 rounded-2xl w-[90%] transition-all hover:shadow-[0_0_20px_rgba(74,222,128,0.08)]">
       
       {/* Info Head */}
       <div className="flex justify-between items-center text-white mb-2">
         <span className="font-bold text-lg">Profile Info</span>
         <div 
-          className="cursor-pointer hover:text-[#b578ff] text-sm font-medium transition-colors"
+          className="cursor-pointer hover:text-[#4ade80] text-sm font-medium transition-colors"
           onClick={() => setModalOpened(true)}
         >
           Edit

@@ -84,39 +84,73 @@ export const like_DislikePost = async (req, res) => {
     }
 }
 
+// Helper: enrich raw posts with author info in one aggregation
+const enrichPostsWithAuthor = async (postIds) => {
+    if (!postIds || postIds.length === 0) return [];
+    return postModel.aggregate([
+        { $match: { _id: { $in: postIds.map(id => new mongoose.Types.ObjectId(id.toString())) } } },
+        {
+            $lookup: {
+                from: 'users',
+                let: { uid: '$userId' },
+                pipeline: [
+                    { $match: { $expr: { $eq: ['$_id', { $toObjectId: '$$uid' }] } } },
+                    { $project: { firstname: 1, lastname: 1, profilePicture: 1 } }
+                ],
+                as: 'author'
+            }
+        },
+        { $addFields: { author: { $arrayElemAt: ['$author', 0] } } },
+        { $sort: { createdAt: -1 } }
+    ]);
+};
+
 // get timeline posts
 export const timeline = async (req, res) => {
     const userId = req.params.userId;
     try {
-        const currUserPosts = await postModel.find({userId : userId});
-        const followingUserPosts = await UserModel.aggregate(
-            [
-                {
-                    $match : {
-                        _id : new mongoose.Types.ObjectId(userId),
-                    }
-                },
-                {
-                    $lookup : {
-                        from : "posts",
-                        localField : "following",
-                        foreignField : "userId",
-                        as : "followingUserPosts",
-                    }
-                },
-                {
-                    $project : {
-                        followingUserPosts : 1,
-                        _id : 0,
-                    }
+        // Get own posts + following posts
+        const currUserPosts = await postModel.find({ userId });
+
+        const followingAgg = await UserModel.aggregate([
+            { $match: { _id: new mongoose.Types.ObjectId(userId) } },
+            {
+                $lookup: {
+                    from: 'posts',
+                    localField: 'following',
+                    foreignField: 'userId',
+                    as: 'followingUserPosts',
                 }
-            ]
-        );
-        res.status(200).json(currUserPosts.concat(...followingUserPosts[0].followingUserPosts).sort((a,b) => {
-            return b.createdAt - a.createdAt;
-        }))
+            },
+            { $project: { followingUserPosts: 1, _id: 0 } }
+        ]);
+
+        let rawPosts = currUserPosts.concat(
+            ...(followingAgg[0]?.followingUserPosts || [])
+        ).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        // Fallback: if feed is empty, surface demo posts
+        if (rawPosts.length === 0) {
+            const demoEmails = [
+                'aria.patel@demo.com',
+                'liam.chen@demo.com',
+                'sofia.rivera@demo.com',
+                'james.okafor@demo.com',
+                'yuki.tanaka@demo.com',
+            ];
+            const demoUsers = await UserModel.find({ email: { $in: demoEmails } }, '_id');
+            const demoIds = demoUsers.map((d) => d._id.toString());
+            rawPosts = await postModel.find({ userId: { $in: demoIds } }).sort({ createdAt: -1 }).limit(10);
+        }
+
+        // Enrich all collected posts with author info
+        const postIds = rawPosts.map(p => p._id);
+        const enrichedPosts = await enrichPostsWithAuthor(postIds);
+
+        res.status(200).json(enrichedPosts);
     }
     catch (error) {
-        res.status(500).json({ message : "Server error"});
+        res.status(500).json({ message: 'Server error' });
     }
 }
+

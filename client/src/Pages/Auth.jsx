@@ -48,14 +48,14 @@ const Auth = () => {
     <div className="flex items-center justify-center min-h-[100vh] gap-16 relative overflow-hidden">
       
       {/* Background Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-purple-600/20 blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-600/20 blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#4ade80]/15 blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#7c3aed]/15 blur-[120px] pointer-events-none"></div>
 
       {/* Left Side */}
       <div className="flex items-center gap-8 z-10 hidden md:flex">
-        <img src={Logo} alt="Logo" className="w-16 h-16 drop-shadow-[0_0_15px_rgba(150,21,219,0.5)]" />
+        <img src={Logo} alt="Logo" className="w-16 h-16 drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]" />
         <div>
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#b578ff] to-[#6674cc]">Connect</h2>
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#4ade80] to-[#7c3aed]">Connect</h2>
           <h5 className="text-sm text-gray-300 mt-2 font-medium tracking-wide">
             Explore the ideas throughout <br /> the world.
           </h5>
@@ -65,7 +65,7 @@ const Auth = () => {
       {/* Right Side */}
       <div className="flex items-center justify-center z-10">
         <form
-          className="glass-card rounded-3xl p-8 flex flex-col items-center gap-6 w-[22rem] transition-all duration-300 hover:shadow-[0_0_30px_rgba(150,21,219,0.15)]"
+          className="glass-card rounded-3xl p-8 flex flex-col items-center gap-6 w-[22rem] transition-all duration-300 hover:shadow-[0_0_30px_rgba(74,222,128,0.12)]"
           onSubmit={handlSubmit}
         >
           <h2 className="text-2xl font-bold text-white mb-2">

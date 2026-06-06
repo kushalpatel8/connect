@@ -55,7 +55,7 @@ const PostShare = () => {
     }
 
     return (
-        <div className="flex gap-4 glass-card p-5 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(150,21,219,0.1)]">
+        <div className="flex gap-4 glass-card p-5 rounded-2xl transition-all hover:shadow-[0_0_20px_rgba(74,222,128,0.08)]">
             
             {/* Profile Picture */}
             {user.profilePicture ? (
@@ -65,8 +65,8 @@ const PostShare = () => {
                     className="rounded-full w-12 h-12 object-cover shrink-0"
                 />
             ) : (
-                <div className="rounded-full w-12 h-12 bg-[#1a1d2d] flex items-center justify-center shrink-0">
-                    <UserCircle className="w-8 h-8 text-[#b578ff]" strokeWidth={1.5} />
+                <div className="rounded-full w-12 h-12 bg-[#0e1a12] flex items-center justify-center shrink-0">
+                    <UserCircle className="w-8 h-8 text-[#4ade80]" strokeWidth={1.5} />
                 </div>
             )}
 
