@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URL=mongodb+srv://pkushal649_db_user:rSW9U21HR1nzsLsQ@cluster0.84uwtdw.mongodb.net/?appName=Cluster0
+      - FRONTEND_URL=http://localhost:5173
+      - PORT=3000
+    networks:
+      - mern-network
+
+  client:
+    build: ./client
+    ports:
+      - "5173:80"
+    networks:
+      - mern-network
+    depends_on:
+      - server
+
+networks:
+  mern-network:
+    driver: bridge
