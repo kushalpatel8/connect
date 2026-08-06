@@ -34,6 +34,11 @@ Connect allows users to share updates, interact with friends, follow other users
 * **Bcrypt** (for encrypting user passwords)
 * **Multer** (for handling image uploads)
 
+### Infrastructure & DevOps
+* **Docker** (Containerization of client and server)
+* **Docker Compose** (Multi-container orchestration)
+* **Nginx** (Serving the built React frontend inside Docker)
+
 ---
 
 ## 🚀 Getting Started
@@ -42,8 +47,9 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/en/) installed on your machine.
+* [Node.js](https://nodejs.org/en/) installed on your machine (for manual setup).
 * A [MongoDB](https://www.mongodb.com/) account and cluster URL.
+* [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) (if running via Docker).
 
 ### 1. Clone the Repository
 
@@ -52,7 +58,22 @@ git clone <your-repository-url>
 cd connect
 ```
 
-### 2. Backend Setup
+### 2. Run with Docker (Recommended)
+
+The easiest way to run the application is using Docker Compose.
+
+1. Create a `.env` file in the `server` directory and add your MongoDB Atlas string and JWT Key:
+   ```env
+   MONGODB_URL = your_mongodb_connection_string
+   JWT_KEY = your_secret_jwt_key
+   ```
+2. In the root directory, start the containers:
+   ```bash
+   docker-compose up --build
+   ```
+3. The frontend will be available at `http://localhost:5173` and the backend server at `http://localhost:3000`.
+
+### 3. Manual Backend Setup
 
 1. Navigate to the server directory:
    ```bash
@@ -73,7 +94,7 @@ cd connect
    # Server will start on http://localhost:3000
    ```
 
-### 3. Frontend Setup
+### 4. Manual Frontend Setup
 
 1. Open a new terminal and navigate to the client directory:
    ```bash
