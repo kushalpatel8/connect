@@ -1,5 +1,6 @@
 # Connect - Social Media Application
 
+![Connect App Screenshot](./Screenshot.png)
 Welcome to **Connect**, a fully-featured social media platform built using the MERN stack (MongoDB, Express, React, Node.js). 
 
 Connect allows users to share updates, interact with friends, follow other users, and engage with a global timeline. It features a stunning, modern **Dark Mode Glassmorphism** user interface, complete with smooth animations and dynamic responsive layouts.
